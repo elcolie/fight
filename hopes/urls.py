@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
-from hope.models import Student, School
-from hope.views import ListStudents, CreateStudent, EditStudent, DeleteStudent, ListSchools, CreateSchool, EditSchool, DeleteSchool
+from hopes.models import Student, School
+from hopes.views import ListStudents, CreateStudent, EditStudent, DeleteStudent, ListSchools, CreateSchool, EditSchool, DeleteSchool
 
 urlpatterns = [
     url(r'^$', ListStudents.as_view(), name='list_students'),

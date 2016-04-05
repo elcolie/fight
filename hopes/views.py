@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse_lazy
-from hope.models import Student, School
-from hope.forms import StudentForm, SchoolForm
+from hopes.models import Student, School
+from hopes.forms import StudentForm, SchoolForm
 from vanilla import CreateView, DeleteView, ListView, UpdateView
 
 

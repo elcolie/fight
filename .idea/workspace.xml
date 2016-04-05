@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd20e86-01f2-4430-bb7c-27254b895680" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hope/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hope/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vanilla/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vanilla/model_views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vanilla/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vanilla/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vanilla/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hopes/apps.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/hopes/forms.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hope/forms.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/__init__.py" afterPath="$PROJECT_DIR$/hopes/migrations/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/admin.py" afterPath="$PROJECT_DIR$/hopes/admin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/migrations/__init__.py" afterPath="$PROJECT_DIR$/hopes/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/models.py" afterPath="$PROJECT_DIR$/hopes/models.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/templates/hopes/hope_form.html" afterPath="$PROJECT_DIR$/hopes/templates/hopes/hope_form.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/templates/hopes/hope_list.html" afterPath="$PROJECT_DIR$/hopes/templates/hopes/hope_list.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/tests.py" afterPath="$PROJECT_DIR$/hopes/tests.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/urls.py" afterPath="$PROJECT_DIR$/hopes/urls.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hope/views.py" afterPath="$PROJECT_DIR$/hopes/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fight/settings.py" afterPath="$PROJECT_DIR$/fight/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fight/urls.py" afterPath="$PROJECT_DIR$/fight/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hope/models.py" afterPath="$PROJECT_DIR$/hope/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hope/views.py" afterPath="$PROJECT_DIR$/hope/views.py" />
     </list>
     <ignored path="fight.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +40,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hope/views.py">
+        <entry file="file://$PROJECT_DIR$/hopes/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
@@ -45,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hope/forms.py">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hopes/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+            <state relative-caret-position="210">
+              <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -57,8 +61,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="hope_list.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hopes/templates/hopes/hope_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hope/urls.py">
+        <entry file="file://$PROJECT_DIR$/hopes/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
@@ -70,10 +84,10 @@
         </entry>
       </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hope/models.py">
+        <entry file="file://$PROJECT_DIR$/hopes/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+            <state relative-caret-position="696">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -84,11 +98,31 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fight/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
               <folding>
                 <element signature="e#638#679#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fight/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hopes/apps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,9 +147,14 @@
         <option value="$PROJECT_DIR$/hope/templates/hopes/hope_list.html" />
         <option value="$PROJECT_DIR$/hope/urls.py" />
         <option value="$PROJECT_DIR$/hope/views.py" />
-        <option value="$PROJECT_DIR$/fight/urls.py" />
         <option value="$PROJECT_DIR$/hope/models.py" />
         <option value="$PROJECT_DIR$/hope/forms.py" />
+        <option value="$PROJECT_DIR$/fight/urls.py" />
+        <option value="$PROJECT_DIR$/hope/app.py" />
+        <option value="$PROJECT_DIR$/hope/apps.py" />
+        <option value="$PROJECT_DIR$/fight/settings.py" />
+        <option value="$PROJECT_DIR$/hopes/models.py" />
+        <option value="$PROJECT_DIR$/hopes/templates/hopes/hope_list.html" />
       </list>
     </option>
   </component>
@@ -125,10 +164,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="726" />
+    <option name="x" value="730" />
     <option name="y" value="23" />
-    <option name="width" value="1191" />
-    <option name="height" value="877" />
+    <option name="width" value="1187" />
+    <option name="height" value="913" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -197,7 +236,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hope" />
+              <option name="myItemId" value="hopes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -211,7 +250,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hope" />
+              <option name="myItemId" value="hopes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -233,7 +272,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="hope" />
+              <option name="myItemId" value="hopes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -547,10 +586,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="726" y="23" width="1191" height="877" extended-state="0" />
+    <frame x="730" y="23" width="1187" height="913" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2199832" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22072451" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -578,7 +617,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hope/views.py">
+    <entry file="file://$PROJECT_DIR$/hopes/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
@@ -586,7 +625,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hope/templates/hopes/hope_form.html">
+    <entry file="file://$PROJECT_DIR$/hopes/templates/hopes/hope_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
@@ -594,7 +633,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hope/templates/hopes/hope_list.html">
+    <entry file="file://$PROJECT_DIR$/hopes/templates/hopes/hope_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
@@ -602,7 +641,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hope/models.py">
+    <entry file="file://$PROJECT_DIR$/hopes/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
@@ -630,15 +669,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hope/templates/hopes/hope_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hope/templates/hopes/hope_form.html">
+    <entry file="file://$PROJECT_DIR$/hopes/templates/hopes/hope_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
@@ -646,7 +677,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hope/views.py">
+    <entry file="file://$PROJECT_DIR$/hopes/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hopes/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hopes/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
@@ -654,27 +703,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fight/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#638#679#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hope/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hope/urls.py">
+    <entry file="file://$PROJECT_DIR$/hopes/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
@@ -684,13 +713,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hope/forms.py">
+    <entry file="file://$PROJECT_DIR$/hopes/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+        <state relative-caret-position="696">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fight/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="e#638#679#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fight/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hopes/templates/hopes/hope_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
