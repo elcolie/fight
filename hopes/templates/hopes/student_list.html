@@ -6,18 +6,32 @@
     <body>
         <h1 style="margin: 30px">Django Vanilla Views</h1>
         <div style="margin: 30px">
-            {% if note_list %}
+            {% if student_list %}
             <table class="table table-striped">
                 <tr><th>Message</th><th>Completed</th><th></th><th></th></tr>
-                {% for hope in hope_list %}
+                {% for student in student_list %}
                     <tr>
-                        <td>{{ hope.message }}</td>
-                        <td>{{ note.checkbox_character }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.surname }}</td>
+                        <td>{{ student.country }}</td>
+                        <td>{{ student.birthdate }}</td>
+                        <td>{{ student.weight_kg }}</td>
+                        <td>{{ student.blood }}</td>
+                        <td>{{ student.height_cm }}</td>
+                        <td>{{ student.primary_school.name }}</td>
+                        <td>{{ student.secondary_school.name }}</td>
+                        <td><a href="{% url 'edit_student' student.pk %}">edit</a></td>
+                        <td>
+                            <form method="POST" action="{% url 'delete_student' student.pk %}">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-sm btn-danger" value="delete">
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
             {% endif %}
-            <p><a href="{% url 'create_note' %}">Create a new note</a></p>
+            <p><a href="{% url 'create_student' %}">Create a new student</a></p>
         </div>
     </body>
 </html>

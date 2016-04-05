@@ -6,23 +6,20 @@
     <body>
         <h1 style="margin: 30px">Django Vanilla Views</h1>
         <div style="margin: 30px">
-            {% if student_list %}
+            {% if school_list %}
             <table class="table table-striped">
                 <tr><th>Message</th><th>Completed</th><th></th><th></th></tr>
-                {% for student in student_list %}
+                {% for school in school_list %}
                     <tr>
-                        <td>{{ student.name }}</td>
-                        <td>{{ student.surname }}</td>
-                        <td>{{ student.country }}</td>
-                        <td>{{ student.birthdate }}</td>
-                        <td>{{ student.weight_kg }}</td>
-                        <td>{{ student.blood }}</td>
-                        <td>{{ student.height_cm }}</td>
-                        <td>{{ student.primary_school.name }}</td>
-                        <td>{{ student.secondary_school.name }}</td>
-                        <td><a href="{% url 'edit_student' student.pk %}">edit</a></td>
+                        <td>{{ school.name }}</td>
+                        <td>{{ school.address }}</td>
+                        <td>{{ school.region }}</td>
+                        <td>{{ school.postcode }}</td>
+                        <td>{{ school.country }}</td>
+                        <td>{{ school.build_date }}</td>
+                        <td><a href="{% url 'edit_school' school.pk %}">edit</a></td>
                         <td>
-                            <form method="POST" action="{% url 'delete_student' student.pk %}">
+                            <form method="POST" action="{% url 'delete_school' school.pk %}">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-sm btn-danger" value="delete">
                             </form>
@@ -31,7 +28,7 @@
                 {% endfor %}
             </table>
             {% endif %}
-            <p><a href="{% url 'create_student' %}">Create a new student</a></p>
+            <p><a href="{% url 'create_school' %}">Create a new school</a></p>
         </div>
     </body>
 </html>

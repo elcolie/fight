@@ -4,11 +4,11 @@
         <link href="/static/css/bootstrap.css" rel="stylesheet">
     </head>
     <body>
-        <h1 style="margin: 30px">{% if hope %}Edit note{% else %}Create hope{% endif%}</h1>
+        <h1 style="margin: 30px">{% if hope %}Edit note{% else %}Create student{% endif%}</h1>
         <div style="margin: 30px">
         <form method="POST" action=".">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_ul }}
         <input type="submit" class="btn btn-primary" value="Save">
         </form>
         </div>
