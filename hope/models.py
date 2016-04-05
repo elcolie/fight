@@ -33,7 +33,7 @@ class Building(models.Model):
     """
     address = models.CharField(max_length=255)
     region = models.CharField(max_length=255)
-    postcode = models.CharField(max=20)
+    postcode = models.CharField(max_length=20)
     country = models.CharField(max_length=46)
     build_date = models.DateField(_("Date"), default=datetime.date.today)
 
@@ -42,7 +42,7 @@ class Building(models.Model):
 
 
 class School(Building):
-    name = models.CharField(max_lenght=255)
+    name = models.CharField(max_length=255)
 
 
 class Student(HumanProfile):
