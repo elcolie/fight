@@ -44,6 +44,9 @@ class Building(models.Model):
 class School(Building):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name    # Put name on Django drop down list. Otherwise it filled by objects
+
 
 class Student(HumanProfile):
     primary_school = models.ForeignKey(School, related_name="prim_school")
