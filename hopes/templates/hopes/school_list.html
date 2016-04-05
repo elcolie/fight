@@ -1,14 +1,17 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     </head>
     <body>
         <h1 style="margin: 30px">Django Vanilla Views</h1>
         <div style="margin: 30px">
             {% if school_list %}
             <table class="table table-striped">
-                <tr><th>Message</th><th>Completed</th><th></th><th></th></tr>
+                <tr><th>Name</th><th>Address</th><th>Region</th><th>PostCode</th><th>Country</th><th>BuildDate</th>
+                </tr>
                 {% for school in school_list %}
                     <tr>
                         <td>{{ school.name }}</td>

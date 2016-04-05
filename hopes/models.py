@@ -49,8 +49,8 @@ class School(Building):
 
 
 class Student(HumanProfile):
-    primary_school = models.ForeignKey(School, related_name="prim_school")
-    secondary_school = models.ForeignKey(School, related_name="second_school")
+    primary_school = models.ForeignKey(School, related_name="prim_school", null=True, blank=True)
+    secondary_school = models.ForeignKey(School, related_name="second_school", null=True, blank=True)
 
 
 

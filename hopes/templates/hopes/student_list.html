@@ -8,7 +8,10 @@
         <div style="margin: 30px">
             {% if student_list %}
             <table class="table table-striped">
-                <tr><th>Message</th><th>Completed</th><th></th><th></th></tr>
+                <tr>
+                    <th>Name</th><th>Surname</th><th>Country</th><th>BirthDate</th><th>Weight(kg)</th>
+                    <th>BloodType</th><th>Height(cm)</th><th>PrimarySchool</th><th>SecondarySchool</th>
+                </tr>
                 {% for student in student_list %}
                     <tr>
                         <td>{{ student.name }}</td>
