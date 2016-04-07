@@ -29,13 +29,39 @@ class HumanProfile(models.Model):
 
 class Building(models.Model):
     """
-    Abstract base classes for
+    Abstract base classes for Building
     """
     address = models.CharField(max_length=255)
     region = models.CharField(max_length=255)
     postcode = models.CharField(max_length=20)
     country = models.CharField(max_length=46)
     build_date = models.DateField(_("Date"), default=datetime.date.today)
+
+    class Meta:
+        abstract = True
+
+
+class AbstractDateTime(models.Model):
+    """
+    Abstract base classes for date/time
+    """
+    start_date = models.DateField(blank=True)
+    start_time = models.TimeField(blank=True)
+    end_date = models.DateField(blank=True)
+    end_time = models.TimeField(blank=True)
+
+    class Meta:
+        abstract = True
+
+
+class ScheduleCode(models.Model):
+
+    TIME_TYPES = (
+        ('OneTime', 'One-Time schedule'),
+        ('Recurrence', 'Recurrence schedule'),
+        ('Specific', 'Specific Date/Time'),
+    )
+    time_code = models.CharField(max_length=15, choices=TIME_TYPES)
 
     class Meta:
         abstract = True
@@ -53,8 +79,13 @@ class Student(HumanProfile):
     secondary_school = models.ForeignKey(School, related_name="second_school", null=True, blank=True)
 
 
-
-
+class Subject(AbstractDateTime, ScheduleCode):
+    """
+    Subject contain ID, name, code, start-time, end-time, recurrence-time
+    """
+    name = models.CharField(max_length=255)
+    code = models.CharField(max_length=30)
+    schedule_code = models.ForeignKey()     # Let it use foreign key from another table
 
 
 
