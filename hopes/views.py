@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse_lazy
-from hopes.models import Student, School
+
 from hopes.forms import StudentForm, SchoolForm
+from hopes.models import Student, School
 from vanilla import CreateView, DeleteView, ListView, UpdateView
 
 
@@ -47,4 +48,3 @@ class EditSchool(UpdateView):
 class DeleteSchool(DeleteView):
     model = School
     success_url = reverse_lazy('list_schools')
-
