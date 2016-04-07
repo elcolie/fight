@@ -1,10 +1,13 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     </head>
+
     <body>
-        <h1 style="margin: 30px">{% if hope %}Edit note{% else %}Create student{% endif%}</h1>
+        <h1 style="margin: 30px">{% if student %}Edit student{% else %}Create student{% endif%}</h1>
         <div style="margin: 30px">
         <form method="POST" action=".">
         {% csrf_token %}
