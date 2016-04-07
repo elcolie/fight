@@ -8,26 +8,19 @@
     <body>
         <h1 style="margin: 30px">Django Vanilla Views</h1>
         <div style="margin: 30px">
-            {% if student_list %}
+            {% if on_time_list %}
             <table class="table table-striped">
                 <tr>
-                    <th>Name</th><th>Surname</th><th>Country</th><th>BirthDate</th><th>Weight(kg)</th>
-                    <th>BloodType</th><th>Height(cm)</th><th>PrimarySchool</th><th>SecondarySchool</th>
+                    <th>Start Date</th><th>Start Time</th>
                 </tr>
-                {% for student in student_list %}
+                {% for on_time in on_time_list %}
                     <tr>
-                        <td>{{ student.name }}</td>
-                        <td>{{ student.surname }}</td>
-                        <td>{{ student.country }}</td>
-                        <td>{{ student.birthdate }}</td>
-                        <td>{{ student.weight_kg }}</td>
-                        <td>{{ student.blood }}</td>
-                        <td>{{ student.height_cm }}</td>
-                        <td>{{ student.primary_school.name }}</td>
-                        <td>{{ student.secondary_school.name }}</td>
-                        <td><a href="{% url 'edit_student' student.pk %}">edit</a></td>
+                        <td>{{ on_time.start_date }}</td>
+                        <td>{{ on_time.start_time }}</td>
+
+                        <td><a href="{% url 'edit_on_time' on_time.pk %}">edit</a></td>
                         <td>
-                            <form method="POST" action="{% url 'delete_student' student.pk %}">
+                            <form method="POST" action="{% url 'delete_on_time' on_time.pk %}">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-sm btn-danger" value="delete">
                             </form>
@@ -36,7 +29,7 @@
                 {% endfor %}
             </table>
             {% endif %}
-            <p><a href="{% url 'create_student' %}">Create a new student</a></p>
+            <p><a href="{% url 'create_on_time' %}">Create a new on_time</a></p>
         </div>
     </body>
 </html>

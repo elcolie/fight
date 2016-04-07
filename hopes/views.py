@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse_lazy
 
 from hopes.forms import StudentForm, SchoolForm
-from hopes.models import Student, School
+from hopes.models import Student, School, OneTime
 from vanilla import CreateView, DeleteView, ListView, UpdateView
 
 
@@ -48,3 +48,28 @@ class EditSchool(UpdateView):
 class DeleteSchool(DeleteView):
     model = School
     success_url = reverse_lazy('list_schools')
+
+
+"""----------------------------------------------------------"""
+
+
+class ListOneTime(ListView):
+    model = OneTime
+
+
+class CreateOneTime(CreateView):
+    model = OneTime
+    form_class = OneTimeForm
+    success_url = reverse_lazy('list_one_time')
+
+
+class EditOneTime(UpdateView):
+    model = OneTime
+    form_class = OneTimeForm
+    success_url = reverse_lazy('list_one_time')
+
+
+class DeleteOneTime(DeleteView):
+    model = OneTime
+    success_url = reverse_lazy('list_one_time')
+

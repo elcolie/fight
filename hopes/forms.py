@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Student, School
+from .models import Student, School, OneTime
 
 
 class StudentForm(ModelForm):
@@ -15,3 +15,7 @@ class SchoolForm(ModelForm):
         fields = ['name', 'address', 'region', 'postcode', 'country', 'build_date']
 
 
+class OneTimeForm(ModelForm):
+    class Meta:
+        model = OneTime
+        fields = ['start_date', 'start_time', 'end_date', 'end_time', 'period', 'type']

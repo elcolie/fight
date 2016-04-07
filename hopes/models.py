@@ -8,12 +8,16 @@ class HumanProfile(models.Model):
     """
     Abstract base classes for Humanity
     """
+    BLOOD_A = 'A'
+    BLOOD_B = 'B'
+    BLOOD_AB = 'AB'
+    BLOOD_O = 'O'
 
     BLOOD_TYPES = (
-        ('A', 'A-type'),
-        ('B', 'B-type'),
-        ('AB', 'AB-type'),
-        ('O', 'O-type'),
+        (BLOOD_A, _('A-type')),
+        (BLOOD_B, _('B-type')),
+        (BLOOD_AB, _('AB-type')),
+        (BLOOD_O, _('O-type')),
     )
     name = models.CharField(max_length=255)
     surname = models.CharField(max_length=512)
@@ -45,23 +49,28 @@ class AbstractDateTime(models.Model):
     """
     Abstract base classes for date/time
     """
-    start_date = models.DateField(blank=True)
-    start_time = models.TimeField(blank=True)
-    end_date = models.DateField(blank=True)
-    end_time = models.TimeField(blank=True)
+    PERIOD_MIN = 0
+    PERIOD_HOUR = 1
+    PERIOD_DAY = 2
+    PERIOD_MONTH = 3
+    PERIOD_YEAR = 4
+    PERIOD_FOREVER = 5
 
-    class Meta:
-        abstract = True
-
-
-class ScheduleCode(models.Model):
-
-    TIME_TYPES = (
-        ('OneTime', 'One-Time schedule'),
-        ('Recurrence', 'Recurrence schedule'),
-        ('Specific', 'Specific Date/Time'),
+    STOP_PERIODS = (
+        (PERIOD_MIN, _('Stop every minutes')),
+        (PERIOD_HOUR, _('Stop every hour')),
+        (PERIOD_DAY, _('Stop every day')),
+        (PERIOD_MONTH, _('Stop every month')),
+        (PERIOD_YEAR, _('Stop every year')),
+        (PERIOD_FOREVER, _('Not start again'))
     )
-    time_code = models.CharField(max_length=15, choices=TIME_TYPES)
+
+    start_date = models.DateField(blank=True, null=True)
+    start_time = models.TimeField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    end_time = models.TimeField(blank=True, null=True)
+
+    period = models.CharField(max_length=10, choices=STOP_PERIODS)
 
     class Meta:
         abstract = True
@@ -79,14 +88,50 @@ class Student(HumanProfile):
     secondary_school = models.ForeignKey(School, related_name="second_school", null=True, blank=True)
 
 
-class Subject(AbstractDateTime, ScheduleCode):
+class OneTime(AbstractDateTime):
+    """Has start_date, start_time, end_date, end_time"""
+    STOP_TYPES = (
+        ('Date', 'Date/Time type'),
+        ('Period', 'Life time min, hr, day, month, forever'),
+    )
+    type = models.CharField(max_length=10, choices=STOP_TYPES)
+
+
+class RecurrenceTime(AbstractDateTime):
+
+    RECURRENCE_TYPES = (
+        ('Day', 'String representation of day'),
+        ('Number', 'Periodically run on day count period'),
+        ('Month', 'Monthly period'),
+    )
+
+    monday = models.BooleanField(default=False)
+    tuesday = models.BooleanField(default=False)
+    wednesday = models.BooleanField(default=False)
+    thursday = models.BooleanField(default=False)
+    friday = models.BooleanField(default=False)
+    saturday = models.BooleanField(default=False)
+    sunday = models.BooleanField(default=False)
+
     """
-    Subject contain ID, name, code, start-time, end-time, recurrence-time
+    Date on number?
+    Should I use single record handle it
     """
-    name = models.CharField(max_length=255)
-    code = models.CharField(max_length=30)
-    schedule_code = models.ForeignKey()     # Let it use foreign key from another table
+
+    january = models.BooleanField(default=False)
+    february = models.BooleanField(default=False)
+    march = models.BooleanField(default=False)
+    april = models.BooleanField(default=False)
+    may = models.BooleanField(default=False)
+    june = models.BooleanField(default=False)
+    july = models.BooleanField(default=False)
+    august = models.BooleanField(default=False)
+    september = models.BooleanField(default=False)
+    october = models.BooleanField(default=False)
+    november = models.BooleanField(default=False)
+    december = models.BooleanField(default=False)
 
 
-
-
+class SpecDateTime(AbstractDateTime):
+    class Meta:
+        abstract = False

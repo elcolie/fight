@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        <h1 style="margin: 30px">{% if student %}Edit student{% else %}Create student{% endif%}</h1>
+        <h1 style="margin: 30px">{% if one_time %}Edit one_time{% else %}Create one_time{% endif%}</h1>
         <div style="margin: 30px">
         <form method="POST" action=".">
         {% csrf_token %}
