@@ -5,18 +5,14 @@
         <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1 style="margin: 30px">One-Time schedule Views</h1>
+        <h1 style="margin: 30px">Specific schedule Views</h1>
         <div style="margin: 30px">
-            {% if onetime_list %}
+            {% if specificdatetime_list %}
             <table class="table table-striped">
                 <tr>
                     <th>Start Date/Time</th>
-                    <th>Stop Date/Time</th>
-                    <th>Stop Type</th>
-                    <th>Lifetime Quantity</th>
-                    <th>Lifetime Unit</th>
                 </tr>
-            {% for onetime in onetime_list %}
+            {% for specificdatetime in specificdatetime_list %}
                     <tr>
                         <td>{{ onetime.start_datetime }}</td>
                         <td>{% with onetime.get_stop_datetime as element %}
@@ -37,7 +33,7 @@
                 {% endfor %}
             </table>
             {% endif %}
-            <p><a href="{% url 'create_onetime' %}">Create a new one time schedule</a></p>
+            <p><a href="{% url 'create_specificdatetime' %}">Create a new one time schedule</a></p>
         </div>
     </body>
 </html>
