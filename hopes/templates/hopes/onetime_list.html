@@ -1,5 +1,4 @@
 {% load staticfiles %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,19 +7,30 @@
     <body>
         <h1 style="margin: 30px">Django Vanilla Views</h1>
         <div style="margin: 30px">
-            {% if on_time_list %}
+            {% if onetime_list %}
             <table class="table table-striped">
                 <tr>
-                    <th>Start Date</th><th>Start Time</th>
+                    <th>Schedule Category</th>
+                    <th>Start Date/Time</th>
+                    <th>Stop Date/Time</th>
+                    <th>Stop Type</th>
+                    <th>Lifetime Quantity</th>
+                    <th>Lifetime Unit</th>
                 </tr>
-                {% for on_time in on_time_list %}
+            {% for onetime in onetime_list %}
                     <tr>
-                        <td>{{ on_time.start_date }}</td>
-                        <td>{{ on_time.start_time }}</td>
-
-                        <td><a href="{% url 'edit_on_time' on_time.pk %}">edit</a></td>
+                        <td>{{ onetime.get_schedule_category_display }}</td>
+                        <td>{{ onetime.start_datetime }}</td>
+                        <td>{% with onetime.get_stop_datetime as element %}
+                                {{ element }}
+                            {% endwith %}
+                        </td>
+                        <td>{{ onetime.get_stop_type_display }}</td>
+                        <td>{{ onetime.lifetime_quantity }}</td>
+                        <td>{{ onetime.lifetime_unit }}</td>
+                        <td><a href="{% url 'edit_onetime' onetime.pk %}">edit</a></td>
                         <td>
-                            <form method="POST" action="{% url 'delete_on_time' on_time.pk %}">
+                            <form method="POST" action="{% url 'delete_onetime' onetime.pk %}">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-sm btn-danger" value="delete">
                             </form>
@@ -29,7 +39,7 @@
                 {% endfor %}
             </table>
             {% endif %}
-            <p><a href="{% url 'create_on_time' %}">Create a new on_time</a></p>
+            <p><a href="{% url 'create_onetime' %}">Create a new one time schedule</a></p>
         </div>
     </body>
 </html>
