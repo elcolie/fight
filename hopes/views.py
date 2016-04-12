@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse_lazy
 
-from hopes.forms import StudentForm, SchoolForm
+from hopes.forms import StudentForm, SchoolForm, OneTimeForm
 from hopes.models import Student, School, OneTime
 from vanilla import CreateView, DeleteView, ListView, UpdateView
 
@@ -60,16 +60,16 @@ class ListOneTime(ListView):
 class CreateOneTime(CreateView):
     model = OneTime
     form_class = OneTimeForm
-    success_url = reverse_lazy('list_one_time')
+    success_url = reverse_lazy('list_onetime')
 
 
 class EditOneTime(UpdateView):
     model = OneTime
     form_class = OneTimeForm
-    success_url = reverse_lazy('list_one_time')
+    success_url = reverse_lazy('list_onetime')
 
 
 class DeleteOneTime(DeleteView):
     model = OneTime
-    success_url = reverse_lazy('list_one_time')
+    success_url = reverse_lazy('list_onetime')
 
