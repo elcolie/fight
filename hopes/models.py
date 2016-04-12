@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-
-import datetime
+from datetime import datetime
+# import datetime
+# Use this because migration start_datetime = models.DateTimeField(default=datetime.now, blank=False)
+# AttributeError: module 'datetime' has no attribute 'now'
 
 
 class HumanProfile(models.Model):
@@ -22,7 +24,7 @@ class HumanProfile(models.Model):
     name = models.CharField(max_length=255)
     surname = models.CharField(max_length=512)
     country = models.CharField(max_length=46)
-    birthDate = models.DateField(_("Date"), default=datetime.date.today)
+    birthDate = models.DateField(_("Date"), default=datetime.today)
     weight_kg = models.PositiveSmallIntegerField(default=1)
     blood = models.CharField(max_length=2, choices=BLOOD_TYPES)
     height_cm = models.SmallIntegerField(default=1)
@@ -39,7 +41,7 @@ class Building(models.Model):
     region = models.CharField(max_length=255)
     postcode = models.CharField(max_length=20)
     country = models.CharField(max_length=46)
-    build_date = models.DateField(_("Date"), default=datetime.date.today)
+    build_date = models.DateField(_("Date"), default=datetime.today)
 
     class Meta:
         abstract = True
@@ -62,7 +64,7 @@ class AbstractDateTime(models.Model):
         (PERIOD_DAY, _('Stop every day')),
         (PERIOD_MONTH, _('Stop every month')),
         (PERIOD_YEAR, _('Stop every year')),
-        (PERIOD_FOREVER, _('Not start again'))
+        (PERIOD_FOREVER, _('Not start again')),
     )
 
     start_date = models.DateField(blank=True, null=True)
@@ -70,10 +72,27 @@ class AbstractDateTime(models.Model):
     end_date = models.DateField(blank=True, null=True)
     end_time = models.TimeField(blank=True, null=True)
 
-    period = models.CharField(max_length=10, choices=STOP_PERIODS)
+    period = models.IntegerField(choices=STOP_PERIODS, default=0)
 
     class Meta:
         abstract = True
+
+
+class AbstractDataTimeType(models.Model):
+    """Do not thing just define 3 types of schedule.
+    1. One-Time
+    2. Recurrence
+    3. Specific Date/Time
+    """
+    SCHEDULE_ONETIME = 0
+    SCHEDULE_RECURRENCE = 1
+    SCHEDULE_SPECIFIC = 2   # Specific Date/Time
+    SCHEDULE_TYPES = (
+        (SCHEDULE_ONETIME, _('One-Time type')),
+        (SCHEDULE_RECURRENCE, _('Recurrence type')),
+        (SCHEDULE_SPECIFIC, _('Specific date time type')),
+    )
+    schedule_category = models.IntegerField(choices=SCHEDULE_TYPES, default=0)
 
 
 class School(Building):
@@ -88,50 +107,48 @@ class Student(HumanProfile):
     secondary_school = models.ForeignKey(School, related_name="second_school", null=True, blank=True)
 
 
-class OneTime(AbstractDateTime):
+class OneTime(AbstractDataTimeType):
     """Has start_date, start_time, end_date, end_time"""
+
+    ONETIME_DATETIME = 0
+    ONETIME_PERIOD = 1
     STOP_TYPES = (
-        ('Date', 'Date/Time type'),
-        ('Period', 'Life time min, hr, day, month, forever'),
-    )
-    type = models.CharField(max_length=10, choices=STOP_TYPES)
-
-
-class RecurrenceTime(AbstractDateTime):
-
-    RECURRENCE_TYPES = (
-        ('Day', 'String representation of day'),
-        ('Number', 'Periodically run on day count period'),
-        ('Month', 'Monthly period'),
+        (ONETIME_DATETIME, _('Date/Time')),
+        (ONETIME_PERIOD, _('Period')),
     )
 
-    monday = models.BooleanField(default=False)
-    tuesday = models.BooleanField(default=False)
-    wednesday = models.BooleanField(default=False)
-    thursday = models.BooleanField(default=False)
-    friday = models.BooleanField(default=False)
-    saturday = models.BooleanField(default=False)
-    sunday = models.BooleanField(default=False)
+    PERIOD_MIN = 0
+    PERIOD_HOUR = 1
+    PERIOD_DAY = 2
+    PERIOD_MONTH = 3
+    PERIOD_YEAR = 4
+    PERIOD_FOREVER = 5
 
-    """
-    Date on number?
-    Should I use single record handle it
-    """
+    LIFETIME_UNIT = (
+        (PERIOD_MIN, _('Stop every minutes')),
+        (PERIOD_HOUR, _('Stop every hour')),
+        (PERIOD_DAY, _('Stop every day')),
+        (PERIOD_MONTH, _('Stop every month')),
+        (PERIOD_YEAR, _('Stop every year')),
+        (PERIOD_FOREVER, _('NonStop')),
+    )
 
-    january = models.BooleanField(default=False)
-    february = models.BooleanField(default=False)
-    march = models.BooleanField(default=False)
-    april = models.BooleanField(default=False)
-    may = models.BooleanField(default=False)
-    june = models.BooleanField(default=False)
-    july = models.BooleanField(default=False)
-    august = models.BooleanField(default=False)
-    september = models.BooleanField(default=False)
-    october = models.BooleanField(default=False)
-    november = models.BooleanField(default=False)
-    december = models.BooleanField(default=False)
+    stop_type = models.PositiveSmallIntegerField(choices=STOP_TYPES, default=0)
+    start_datetime = models.DateTimeField(default=datetime.now, blank=True, null=True)
+    stop_datetime = models.DateTimeField(default=datetime.now, blank=True, null=True)
+    lifetime_quantity = models.PositiveIntegerField(blank=True, null=True)
+    lifetime_unit = models.PositiveSmallIntegerField(choices=LIFETIME_UNIT, default=0, blank=True, null=True)
+
+    def get_stop_datetime(self):
+        if self.stop_type == self.ONETIME_PERIOD:
+            return ""
+        else:
+            return self.stop_datetime
+
+    def get_lifetime_quantity(self):
+        if self.stop_type == self.ONETIME_PERIOD:
+            return self.lifetime_quantity
+        else:
+            return "x"
 
 
-class SpecDateTime(AbstractDateTime):
-    class Meta:
-        abstract = False
