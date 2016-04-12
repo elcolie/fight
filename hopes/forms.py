@@ -18,4 +18,4 @@ class SchoolForm(ModelForm):
 class OneTimeForm(ModelForm):
     class Meta:
         model = OneTime
-        fields = ['start_date', 'start_time', 'end_date', 'end_time', 'period', 'type']
+        fields = ['schedule_category', 'start_datetime', 'stop_datetime', 'stop_type', 'lifetime_quantity', 'lifetime_unit']
