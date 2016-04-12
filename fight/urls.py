@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^students/', include('hopes.student_urls')),
     url(r'^schools/', include('hopes.school_urls')),
+    url(r'^one_time/', include('hopes.onetime_urls')),
 ]
