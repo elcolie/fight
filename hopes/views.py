@@ -1,7 +1,8 @@
 from django.core.urlresolvers import reverse_lazy
+from django.views.generic import View
 
-from hopes.forms import StudentForm, SchoolForm, OneTimeForm
-from hopes.models import Student, School, OneTime
+from hopes.forms import StudentForm, SchoolForm, OneTimeForm, SpecificDateTimeForm
+from hopes.models import Student, School, OneTime, SpecificDateTime
 from vanilla import CreateView, DeleteView, ListView, UpdateView
 
 
@@ -73,3 +74,33 @@ class DeleteOneTime(DeleteView):
     model = OneTime
     success_url = reverse_lazy('list_onetime')
 
+"""-----------------------------------------------------------"""
+from django.shortcuts import render_to_response, render
+from django.template import RequestContext, loader
+
+
+class ListSpecDateTime(View):
+
+    def index(self, request):
+        template = loader.get_template('hopes/simple_spec.html')
+        context = {
+            'spec_list' : 'Test my string',
+        }
+        return render(request, 'hopes/simple_spec.html', context)
+
+
+class CreateSpecDateTime(CreateView):
+    model = SpecificDateTime
+    form_class = SpecificDateTimeForm
+    success_url = reverse_lazy('list_spec_time')
+
+
+class EditSpecDateTime(UpdateView):
+    model = SpecificDateTime
+    form_class = SpecificDateTimeForm
+    success_url = reverse_lazy('list_spec_time')
+
+
+class DeleteSpecDateTime(DeleteView):
+    model = SpecificDateTime
+    success_url = reverse_lazy('list_spec_time')
