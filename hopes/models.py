@@ -85,7 +85,7 @@ class AbstractLifeTime(models.Model):
         (PERIOD_YEAR, _('Stop every year')),
         (PERIOD_FOREVER, _('NonStop')),
     )
-    lifetime_id = models.AutoField(primary_key=True)
+    # lifetime_id = models.AutoField(primary_key=True)
     lifetime_quantity = models.PositiveIntegerField(blank=True, null=True)
     lifetime_unit = models.PositiveSmallIntegerField(choices=LIFETIME_UNIT, default=0, blank=True, null=True)
 
@@ -97,14 +97,14 @@ class AbstractSpecificDateTime(models.Model):
     """Abstract Class SpecificDateTime
     """
     from django.contrib.postgres.fields import JSONField
-    spec_date_time = models.AutoField(primary_key=True)
+    # spec_date_time = models.AutoField(primary_key=True)
     start_datetime = models.DateTimeField(default=datetime.now, blank=True, null=True)
     stop_datetime = models.DateTimeField(default=datetime.now, blank=True, null=True)
     month_json = JSONField()
     days_json = JSONField()
 
-    # class Meta:
-    #     abstract = True
+    class Meta:
+        abstract = True
 
 
 
@@ -122,7 +122,7 @@ class Student(HumanProfile):
     secondary_school = models.ForeignKey(School, related_name="second_school", null=True, blank=True)
 
 
-class OneTime(AbstractDataTimeType, AbstractLifeTime):
+class OneTime(AbstractLifeTime):
     """Has start_date, start_time, end_date, end_time"""
 
     ONETIME_DATETIME = 0
@@ -149,7 +149,7 @@ class OneTime(AbstractDataTimeType, AbstractLifeTime):
             return "x"
 
 
-class SpecificDateTime(AbstractDataTimeType, AbstractLifeTime, AbstractSpecificDateTime):
+class SpecificDateTime(AbstractLifeTime, AbstractSpecificDateTime):
     """Specific Date Time
     """
     # spec_date_time_id = models.AutoField(primary_key=True)
