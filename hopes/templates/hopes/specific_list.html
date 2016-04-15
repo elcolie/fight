@@ -14,17 +14,10 @@
                 </tr>
             {% for specificdatetime in specificdatetime_list %}
                     <tr>
-                        <td>{{ onetime.start_datetime }}</td>
-                        <td>{% with onetime.get_stop_datetime as element %}
-                                {{ element }}
-                            {% endwith %}
-                        </td>
-                        <td>{{ onetime.get_stop_type_display }}</td>
-                        <td>{{ onetime.lifetime_quantity }}</td>
-                        <td>{{ onetime.get_lifetime_unit_display }}</td>
-                        <td><a href="{% url 'edit_onetime' onetime.pk %}">edit</a></td>
+                        <td>{{ specificdatetime.start_datetime }}</td>
+                        <td><a href="{% url 'edit_spec_date_time' specificdatetime.pk %}">edit</a></td>
                         <td>
-                            <form method="POST" action="{% url 'delete_onetime' onetime.pk %}">
+                            <form method="POST" action="{% url 'delete_spec_date_time' spec_date_time.pk %}">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-sm btn-danger" value="delete">
                             </form>
@@ -33,7 +26,7 @@
                 {% endfor %}
             </table>
             {% endif %}
-            <p><a href="{% url 'create_specificdatetime' %}">Create a new one time schedule</a></p>
+            <p><a href="{% url 'create_spec_date_time' %}">Create a new specific date time schedule</a></p>
         </div>
     </body>
 </html>
