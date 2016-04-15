@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from .models import Student, School, OneTime, SpecificDateTime
 from django import forms
 from django.utils.translation import ugettext as _
-
+from django.contrib.postgres import forms as pgsql_forms
 
 class StudentForm(ModelForm):
     class Meta:
@@ -23,7 +23,7 @@ class OneTimeForm(ModelForm):
         fields = ['start_datetime', 'stop_datetime', 'stop_type', 'lifetime_quantity', 'lifetime_unit']
 
 
-class SpecificDateTime(ModelForm):
+class SpecificDateTimeForm(ModelForm):
 
     PERIOD_MIN = 0
     PERIOD_HOUR = 1
@@ -43,8 +43,10 @@ class SpecificDateTime(ModelForm):
 
     class Meta:
         model = SpecificDateTime
-        fields = ['schedule_category', 'start_datetime', 'stop_datetime',
+        fields = ['start_datetime', 'stop_datetime',
                   'lifetime_quantity', 'lifetime_unit', 'month_json', 'days_json']
 
     name = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
                                      choices=LIFETIME_UNIT)
+
+    json = pgsql_forms.JSONField
