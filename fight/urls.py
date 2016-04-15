@@ -19,6 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^students/', include('hopes.student_urls')),
-    url(r'^schools/', include('hopes.school_urls')),
+    url(r'^schools/',  include('hopes.school_urls')),
     url(r'^one_time/', include('hopes.onetime_urls')),
+    url(r'^spec_date_time/', include('hopes.spec_date_time_urls')),
 ]
